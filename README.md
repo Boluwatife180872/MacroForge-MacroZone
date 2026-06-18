@@ -1,61 +1,64 @@
 # MacroForge
 
-A React Native (Expo) app built with `create-expo-app`, using Expo Router for file-based navigation.
+<img src="./assets/images/screenshot.png" width="250" alt="MacroForge screenshot" align="right">
+
+MacroForge is a React Native (Expo) app that transforms macro tracking into something actually interesting. Instead of just logging numbers, it scores your daily nutrition, gives your meals personality tags, and tracks your streak.
+
+## Features
+
+- **Forge Score** — Rates your daily macro balance from 0–100 with ranks like "Legendary" or "Elite"
+- **Meal Personality** — Every meal gets auto-tagged (e.g. "Protein Powerhouse", "Carb Loader")
+- **Daily Food Personality** — End-of-day summary title based on your eating pattern
+- **Streak Tracking** — Consecutive logging days tracked with visual badges
+- **Meal Type & Mood** — Log by meal time (breakfast/lunch/dinner/snack) and how you felt
+- **Glassmorphism UI** — Dark, modern design with animated micro-interactions
+
+## Tech Stack
+
+- [Expo SDK 55](https://docs.expo.dev/versions/v55.0.0/)
+- [Expo Router](https://docs.expo.dev/router/introduction/) (file-based navigation)
+- TypeScript
+- AsyncStorage for local persistence
 
 ## Prerequisites
 
 - Node.js >= 18
 - npm
-- Android device or emulator (for Android builds)
+- Android device/emulator or iOS simulator
 
 ## Setup
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
 
 2. Start the dev server:
+
    ```bash
    npx expo start
    ```
 
-   If your phone can't reach the dev server (host unreachable), use the tunnel option:
-   ```bash
-   npx expo start --tunnel
-   ```
-
-3. Scan the QR code with Expo Go (or a development build) to run the app on your device.
-
-## Development Build
-
-To create an Android APK:
-```bash
-npx expo run:android
-```
+3. Scan the QR code with Expo Go or open in a simulator.
 
 ## Scripts
 
-| Command                     | Description               |
-|-----------------------------|---------------------------|
-| `npm start`                 | Start Expo dev server     |
-| `npm run android`           | Run on Android            |
-| `npm run ios`               | Run on iOS                |
-| `npm run web`               | Start with web support    |
-| `npm run lint`              | Run ESLint                |
-| `npm run reset-project`     | Reset to blank project    |
+| Command                  | Description            |
+| ------------------------ | ---------------------- |
+| `npm start`              | Start Expo dev server  |
+| `npm run android`        | Run on Android         |
+| `npm run ios`            | Run on iOS             |
+| `npm run web`            | Start with web support |
+| `npm run lint`           | Run ESLint             |
 
 ## Project Structure
 
-- `src/app/` — Expo Router file-based routes
-- `src/components/` — Reusable UI components
-- `src/storage/` — Storage utilities
-- `src/styles/` — Style configurations
-- `src/utils/` — Helper utilities
-
-## Tech Stack
-
-- [Expo SDK 55](https://docs.expo.dev/versions/v55.0.0/)
-- [Expo Router](https://docs.expo.dev/router/introduction/)
-- [Expo Dev Client](https://docs.expo.dev/develop/development-builds/introduction/)
-- TypeScript
+```
+src/
+  app/          — Expo Router routes
+  components/   — Reusable UI components
+  storage/      — AsyncStorage helpers
+  styles/       — Colors and shared styles
+  utils/        — Forge Score, personality engine
+```
