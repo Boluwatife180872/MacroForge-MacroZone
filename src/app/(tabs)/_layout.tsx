@@ -8,26 +8,31 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: colors.background,
-          borderTopColor: colors.surface,
+          backgroundColor: '#0a0a1a',
+          borderTopColor: 'rgba(255,255,255,0.06)',
+          borderTopWidth: 1,
         },
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textSecondary,
+        tabBarInactiveTintColor: colors.textMuted,
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: '600',
+        },
       }}
     >
       <Tabs.Screen
         name='index'
         options={{
-          title: 'Home',
+          title: 'Forge',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name='home' size={size} color={color} />
+            <Ionicons name='flame' size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name='add-meals'
         options={{
-          title: 'Add Meal',
+          title: 'Log Meal',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name='add-circle' size={size} color={color} />
           ),
@@ -36,9 +41,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name='meals'
         options={{
-          title: 'All Meals',
+          title: 'History',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name='list' size={size} color={color} />
+            <Ionicons name='time' size={size} color={color} />
           ),
         }}
       />

@@ -1,3 +1,4 @@
+import { colors } from '@/styles/global';
 import { StyleSheet, Text, View } from 'react-native';
 
 type MacroCardProps = {
@@ -14,35 +15,44 @@ export default function MacroCard({
   color,
 }: MacroCardProps) {
   return (
-    <View style={[styles.card, { borderLeftColor: color }]}>
+    <View style={styles.card}>
+      <View style={[styles.accent, { backgroundColor: color }]} />
+      <Text style={[styles.value, { color }]}>{value}</Text>
       <Text style={styles.label}>{label}</Text>
-      <Text style={styles.value}>{value}</Text>
-      <Text style={styles.goal}>/ {goal}</Text>
+      <Text style={styles.goal}>goal: {goal}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#16213e',
-    borderRadius: 12,
+    backgroundColor: colors.card,
+    borderRadius: 16,
     padding: 16,
     width: '47%',
-    borderLeftWidth: 4,
+    borderWidth: 1,
+    borderColor: colors.cardBorder,
+    overflow: 'hidden',
+  },
+  accent: {
+    width: 32,
+    height: 3,
+    borderRadius: 2,
+    marginBottom: 12,
   },
   label: {
-    fontSize: 14,
-    color: '#a0a0b0',
+    fontSize: 13,
+    color: colors.textSecondary,
+    marginTop: 2,
   },
   value: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    marginTop: 4,
+    fontWeight: '800',
+    fontVariant: ['tabular-nums'],
   },
   goal: {
-    fontSize: 14,
-    color: '#a0a0b0',
-    marginTop: 2,
+    fontSize: 12,
+    color: colors.textMuted,
+    marginTop: 4,
   },
 });

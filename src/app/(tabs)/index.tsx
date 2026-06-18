@@ -1,14 +1,13 @@
-import CopyButton from "@/components/CopyButton";
-import HomeHeader from "@/components/HomeHeader";
-import MacroGrid from "@/components/MacroGrid";
-import RecentMeals from "@/components/RecentMeals";
-import ShareButton from "@/components/ShareButton";
-import { getMeals, Meal } from "@/storage/meals";
-import { globalStyles } from "@/styles/global";
-import { useFocusEffect } from "expo-router";
-import { useCallback, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
-import ReminderToggle from '@/components/ReminderToggle';
+import DailyPersonality from '@/components/DailyPersonality';
+import ForgeScoreCard from '@/components/ForgeScoreCard';
+import HomeHeader from '@/components/HomeHeader';
+import MacroGrid from '@/components/MacroGrid';
+import RecentMeals from '@/components/RecentMeals';
+import { getMeals, Meal } from '@/storage/meals';
+import { globalStyles } from '@/styles/global';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useState } from 'react';
+import { ScrollView, Text, View } from 'react-native';
 
 export default function HomeScreen() {
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -16,7 +15,6 @@ export default function HomeScreen() {
   const loadMeals = async () => {
     const data = await getMeals();
     setMeals(data);
-    console.log("Loaded meals:", data);
   };
 
   useFocusEffect(
@@ -26,19 +24,21 @@ export default function HomeScreen() {
   );
 
   return (
-    <ScrollView
-      style={globalStyles.container}
-      contentContainerStyle={{ paddingBottom: 100 }}
-    >
-      <View style={globalStyles.header}>
-        <Text style={globalStyles.title}>MacroForge</Text>
-        <ShareButton meals={meals} />
-      </View>
+    <View style={globalStyles.container}>
       <HomeHeader />
-      <MacroGrid meals={meals} />
-      <CopyButton meals={meals} />
-      <ReminderToggle />
-      <RecentMeals meals={meals} onDelete={loadMeals} />
-    </ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
+        <ForgeScoreCard meals={meals} />
+        <DailyPersonality meals={meals} />
+
+        <Text style={globalStyles.sectionTitle}>Today&apos;s Macros</Text>
+        <MacroGrid meals={meals} />
+
+        <Text style={globalStyles.sectionTitle}>Recent Meals</Text>
+        <RecentMeals meals={meals} onDelete={loadMeals} />
+      </ScrollView>
+    </View>
   );
 }

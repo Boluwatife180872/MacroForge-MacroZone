@@ -1,13 +1,25 @@
 import { StyleSheet } from 'react-native';
 
 export const colors = {
-  background: '#1a1a2e',
-  header: '#242444',
-  surface: '#2a2a4a',
-  primary: '#4fc3f7',
+  background: '#0f0f23',
+  surface: '#1a1a3e',
+  surfaceLight: '#252550',
+  card: 'rgba(255,255,255,0.06)',
+  cardBorder: 'rgba(255,255,255,0.1)',
+  primary: '#7c5cfc',
+  primaryLight: '#a78bfa',
+  accent: '#f472b6',
   text: '#ffffff',
-  textSecondary: '#a0a0b0',
-  alert: '#ff5252',
+  textSecondary: '#8888aa',
+  textMuted: '#555577',
+  alert: '#ef4444',
+  success: '#34d399',
+  score: '#fbbf24',
+  // macro colors
+  protein: '#34d399',
+  carbs: '#fbbf24',
+  fat: '#f472b6',
+  calories: '#ef4444',
 };
 
 export const globalStyles = StyleSheet.create({
@@ -32,6 +44,8 @@ export const globalStyles = StyleSheet.create({
   empty: {
     color: colors.textSecondary,
     fontSize: 14,
+    textAlign: 'center',
+    marginTop: 20,
   },
   header: {
     flexDirection: 'row',

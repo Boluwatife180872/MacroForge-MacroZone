@@ -1,9 +1,9 @@
 import MealItem from '@/components/MealItem';
 import { clearAllMeals, getMeals, Meal } from '@/storage/meals';
-import { globalStyles } from '@/styles/global';
+import { colors, globalStyles } from '@/styles/global';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function AllMealsScreen() {
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -13,9 +13,18 @@ export default function AllMealsScreen() {
     setMeals(data);
   };
 
-  const handleClearAll = async () => {
-    await clearAllMeals();
-    loadMeals();
+  const handleClearAll = () => {
+    Alert.alert('Clear All', 'Delete all logged meals?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Clear',
+        style: 'destructive',
+        onPress: async () => {
+          await clearAllMeals();
+          loadMeals();
+        },
+      },
+    ]);
   };
 
   useFocusEffect(
@@ -25,14 +34,19 @@ export default function AllMealsScreen() {
   );
 
   return (
-    <ScrollView style={globalStyles.container}>
+    <View style={globalStyles.container}>
       <View style={globalStyles.header}>
-        <Text style={globalStyles.title}>All Meals</Text>
-        <TouchableOpacity onPress={handleClearAll}>
-          <Text style={styles.clearButton}>Clear All</Text>
-        </TouchableOpacity>
+        <Text style={globalStyles.title}>Meal History</Text>
+        {meals.length > 0 && (
+          <TouchableOpacity onPress={handleClearAll}>
+            <Text style={styles.clearButton}>Clear All</Text>
+          </TouchableOpacity>
+        )}
       </View>
-      <View style={{ marginTop: 30 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ marginTop: 30, paddingBottom: 100 }}
+      >
         {meals.length === 0 ? (
           <Text style={globalStyles.empty}>No meals logged yet.</Text>
         ) : (
@@ -45,18 +59,20 @@ export default function AllMealsScreen() {
               protein={meal.protein}
               carbs={meal.carbs}
               fat={meal.fat}
+              mealType={meal.mealType}
+              mood={meal.mood}
               onDelete={loadMeals}
             />
           ))
         )}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
-
-const styles = {
+const styles = StyleSheet.create({
   clearButton: {
-    color: 'red',
-    fontSize: 16,
+    color: colors.alert,
+    fontSize: 15,
+    fontWeight: '600',
   },
-};
+});

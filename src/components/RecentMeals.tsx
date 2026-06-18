@@ -9,10 +9,9 @@ type RecentMealsProps = {
 
 export default function RecentMeals({ meals, onDelete }: RecentMealsProps) {
   return (
-    <View style={{ marginTop: 30 }}>
-      <Text style={styles.sectionTitle}>Recent Meals</Text>
+    <View style={{ marginTop: 4 }}>
       {meals.length === 0 ? (
-        <Text style={styles.empty}>No meals logged yet.</Text>
+        <Text style={styles.empty}>No meals logged yet. Tap the + to start.</Text>
       ) : (
         meals
           .slice(0, 5)
@@ -25,6 +24,8 @@ export default function RecentMeals({ meals, onDelete }: RecentMealsProps) {
               protein={meal.protein}
               carbs={meal.carbs}
               fat={meal.fat}
+              mealType={meal.mealType}
+              mood={meal.mood}
               onDelete={onDelete}
             />
           ))
@@ -34,14 +35,10 @@ export default function RecentMeals({ meals, onDelete }: RecentMealsProps) {
 }
 
 const styles = StyleSheet.create({
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#ffffff',
-    marginBottom: 16,
-  },
   empty: {
-    color: '#a0a0b0',
+    color: '#555577',
     fontSize: 14,
+    textAlign: 'center',
+    marginTop: 20,
   },
 });

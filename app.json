@@ -47,6 +47,12 @@
         "projectId": "70891a21-bca3-4fc3-87a3-44307db3bb77"
       }
     },
-    "owner": "bolucodes"
+    "owner": "bolucodes",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/70891a21-bca3-4fc3-87a3-44307db3bb77"
+    }
   }
 }
