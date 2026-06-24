@@ -11,6 +11,11 @@ export default function TabLayout() {
           backgroundColor: '#0a0a1a',
           borderTopColor: 'rgba(255,255,255,0.06)',
           borderTopWidth: 1,
+          height: 72,
+          paddingBottom: 4,
+        },
+        tabBarItemStyle: {
+          marginTop: -8,
         },
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
@@ -24,8 +29,8 @@ export default function TabLayout() {
         name='index'
         options={{
           title: 'Forge',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name='flame' size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name='flame' size={28} color={color} />
           ),
         }}
       />
@@ -33,8 +38,8 @@ export default function TabLayout() {
         name='add-meals'
         options={{
           title: 'Log Meal',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name='add-circle' size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name='add-circle' size={28} color={color} />
           ),
         }}
       />
@@ -42,8 +47,8 @@ export default function TabLayout() {
         name='meals'
         options={{
           title: 'History',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name='time' size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name='time' size={28} color={color} />
           ),
         }}
       />

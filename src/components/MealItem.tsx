@@ -273,17 +273,15 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   closeButton: {
-    backgroundColor: colors.card,
+    backgroundColor: colors.primary,
     borderRadius: 14,
-    padding: 14,
+    padding: 16,
     alignItems: "center",
-    marginTop: 20,
-    borderWidth: 1,
-    borderColor: colors.cardBorder,
+    marginTop: 24,
   },
   closeButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: colors.textSecondary,
+    fontSize: 17,
+    fontWeight: "700",
+    color: colors.text,
   },
 });
